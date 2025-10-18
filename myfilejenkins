@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+   stages {
+        stage('Build') {
+            steps {
+                // Get some code from a GitHub repository
+                https://github.com/Sathvik-911/star-agile-banking-finance.git'
+
+                // Run Maven on a Unix agent.
+                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+
+            }        
+        }
+         stage('Create Docker Image') {
+           steps {
+               sh 'docker build -t sathvik627/financeme:tagname:1.0 '
+                    }
+                }
+         }       
+    }
